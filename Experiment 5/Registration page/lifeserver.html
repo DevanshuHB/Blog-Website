@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Page</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial;
+background:#f2f2f2;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+width:350px;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#3b63d1;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registration</h2>
+
+<form id="registerForm">
+
+<input type="text" id="name" placeholder="Full Name">
+
+<input type="text" id="email" placeholder="Email ID">
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<input type="password" id="password" placeholder="Password">
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let name=document.getElementById("name").value.trim();
+let email=document.getElementById("email").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let password=document.getElementById("password").value.trim();
+
+/* NAME VALIDATION */
+
+if(name.length < 3){
+alert("Name is too short. Minimum 3 characters required.");
+return;
+}
+
+if(!/^[A-Za-z ]+$/.test(name)){
+alert("Name can contain only letters and spaces.");
+return;
+}
+
+
+/* EMAIL VALIDATION */
+
+if(email.length == 0){
+alert("Email cannot be empty.");
+return;
+}
+
+if(!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email)){
+alert("Invalid Email format. Example: user@email.com");
+return;
+}
+
+
+/* PHONE VALIDATION */
+
+if(phone.length != 10){
+alert("Phone number must be exactly 10 digits.");
+return;
+}
+
+if(!/^[0-9]+$/.test(phone)){
+alert("Phone number must contain only digits.");
+return;
+}
+
+if(!/^[6-9]/.test(phone)){
+alert("Phone number must start with 6, 7, 8, or 9.");
+return;
+}
+
+
+/* PASSWORD VALIDATION */
+
+if(password.length < 6){
+alert("Password must be at least 6 characters long.");
+return;
+}
+
+if(!/[A-Za-z]/.test(password)){
+alert("Password must contain at least one letter.");
+return;
+}
+
+if(!/[0-9]/.test(password)){
+alert("Password must contain at least one number.");
+return;
+}
+
+
+/* SUCCESS */
+
+alert("Registration Successful");
+
+});
+
+</script>
+
+</body>
+</html>
